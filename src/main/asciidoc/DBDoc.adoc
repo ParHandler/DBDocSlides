@@ -1,91 +1,94 @@
-= AsciiDoc Article Title
-Firstname Lastname <author@asciidoctor.org>
-3.0, July 29, 2022: AsciiDoc article template
-:toc:
+= DocOps: Документирование баз данных
+Евгений Куниловский, HomeCredit
+:revealjs_theme: black
+:revealjs_customtheme: white_course.css
+:revealjs_slideNumber:
+:revealjs_history:
+:revealjs_progress:
+:encoding: UTF-8
+:lang: ru
+include::_doc_general_attributes.adoc[]
+:doctype: article
+:toclevels: 3
+:imagesdir: images
+:source-highlighter: highlightjs
+:highlightjsdir: highlight
+:highlightjs-languages: java, csharp, sql
 :icons: font
-:url-quickref: https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/
+:iconfont-remote!:
+:iconfont-name: font-awesome-4.7.0/css/font-awesome
+:revealjs_mouseWheel: true
+:revealjs_center: false
+:revealjs_transition: none
+:revealjs_width: 1600
+:revealjs_height: 900
 
-Content entered directly below the header but before the first section heading is called the preamble.
 
-== First level heading
+//== Часть 1. Введение
+:!figure-caption:
 
-This is a paragraph with a *bold* word and an _italicized_ word.
+ParHandler@gmail.com
 
-.Image caption
-image::image-file-name.png[I am the image alt text.]
+icon:twitter[size=lg] @ParHandler
+icon:telegram[size=lg] @ParHandler
 
-This is another paragraph.footnote:[I am footnote text and will be displayed at the bottom of the article.]
+<<<
 
-=== Second level heading
+//[%notitle]
+== Что? Как? Зачем
 
-.Unordered list title
-* list item 1
-** nested list item
-*** nested nested list item 1
-*** nested nested list item 2
-* list item 2
+[%step]
+* Что?
+** Документ в пространстве Confluencе, отражающий актуальное состояние базы данных из master(релизной, фича)-ветки репозитория.
+* Как? Инструменты в работе:
+[%step]
+** AsciiDoctor.
+** Модель данных в проекте .net.
+** Генератор статической документации.
+* Зачем?
+[%step]
+** Код и документация единый артефакт... ну почти единый.
+** Сокращение затрат на поддержку документации в актуальном состоянии.
+** Осваивать DocOps не так сложно как казалось бы на первый взгляд.
+** Дружить с DocOps значит быть в тренде. )
 
-This is a paragraph.
+<<<
 
-.Example block title
-====
-Content in an example block is subject to normal substitutions.
-====
+[%notitle]
+== Кодим
 
-.Sidebar title
-****
-Sidebars contain aside text and are subject to normal substitutions.
-****
-
-==== Third level heading
-
-[#id-for-listing-block]
-.Listing block title
+.RegularPaymentDetailEntity.cs
+[source, csharp]
 ----
-Content in a listing block is subject to verbatim substitutions.
-Listing block content is commonly used to preserve code input.
+include::RegularPaymentDetailEntity.cs[]
 ----
 
-===== Fourth level heading
+<<<
 
-.Table title
-|===
-|Column heading 1 |Column heading 2
 
-|Column 1, row 1
-|Column 2, row 1
+== С чего все началось
+Про постановки в Confluence
 
-|Column 1, row 2
-|Column 2, row 2
-|===
+<<<
 
-====== Fifth level heading
+== К чему это все привело
+Ошибки в реализации.
+Рассинхрон между первичной постановкой и реализацией.
+Постановка начала врать.
+виды лжи ложь наглая ложь статистика. Я бы добавил сюда еще устаревшие постановки.
 
-[quote,firstname lastname,movie title]
-____
-I am a block quote or a prose excerpt.
-I am subject to normal substitutions.
-____
+<<<
 
-[verse,firstname lastname,poem title and more]
-____
-I am a verse block.
-  Indents and endlines are preserved in verse blocks.
-____
+[background-color="white"]
+== Про цикл DocOps
+Design-First vs Code First
+https://apisyouwonthate.com/blog/api-design-first-vs-code-first
 
-== First level heading
+image::CodeFirst.jpg[, {image-100-width}]
 
-TIP: There are five admonition labels: Tip, Note, Important, Caution and Warning.
+[%notitle]
+== Delivery Pipeline
 
-// I am a comment and won't be rendered.
 
-. ordered list item
-.. nested ordered list item
-. ordered list item
 
-The text at the end of this sentence is cross referenced to <<_third_level_heading,the third level heading>>
 
-== First level heading
-
-This is a link to the https://docs.asciidoctor.org/home/[Asciidoctor documentation].
-This is an attribute reference {url-quickref}[that links this text to the AsciiDoc Syntax Quick Reference].
