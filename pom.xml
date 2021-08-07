@@ -28,8 +28,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
-        <asciidoctorj.version>1.5.7</asciidoctorj.version>
-        <jruby.version>9.1.17.0</jruby.version>
+        <asciidoctorj.version>1.6.2</asciidoctorj.version>
+        <jruby.version>9.2.6.0</jruby.version>
         <asciidoctor.maven.plugin.version>1.6.0</asciidoctor.maven.plugin.version>
         <project.slides.directory>${project.build.directory}/generated-slides</project.slides.directory>
         <revealjs.version>3.9.2</revealjs.version>
