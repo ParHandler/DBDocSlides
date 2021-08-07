@@ -1,5 +1,6 @@
 = DocOps: Документирование баз данных
 Евгений Куниловский, HomeCredit
+:rootdir: .
 :revealjs_theme: black
 :revealjs_customtheme: white_course.css
 :revealjs_slideNumber:
@@ -14,8 +15,10 @@ include::_doc_general_attributes.adoc[]
 :imagesdir: images
 :includedir: includes
 :source-highlighter: highlightjs
-:highlightjsdir: highlight
-:highlightjs-languages: java, cs, sql, postgres
+:source-language: csharp
+:highlightjsdir: {rootdir}/highlight/highlight.js
+//:highlightjsdir: highlight
+:highlightjs-languages: csharp
 :icons: font
 :iconfont-remote!:
 :iconfont-name: font-awesome-4.7.0/css/font-awesome
@@ -36,64 +39,33 @@ icon:telegram[size=lg] @ParHandler
 
 <<<
 
-== Slide Five
+[%notitle]
+== Модель сущности
 
-Uses highlighted code
-
-[source, python]
+.RegularPaymentDetailEntity.cs
+[source,csharp]
 ----
-print "Hello World"
+include::{includedir}/RegularPaymentDetailEntity.cs[]
 ----
 
-== Slide Five1
+<<<
 
-Uses highlighted code
+== Формируем документ для рендеринга
+
+.BDSchema.sql
 
 [source,sql]
 ----
 include::{includedir}/BDSchema.sql[]
 ----
 
-== Slide Five1
+== Документ для рендеринга
 
-Uses highlighted code
+.schema.json
 
 [source,json]
 ----
 include::{includedir}/schema.json[]
-----
-
-== Slide Five2
-
-Uses highlighted code
-
-[source, cs]
-----
-using System.Collections.Generic;
-
-namespace Infrastructure.DB.Entities
-{
-    /// <summary>
-    /// Детали регулярных переводов
-    /// </summary>
-    public class RegularPaymentDetailEntity
-    {
-        /// <summary>
-        /// Идентификатор ППП
-        /// </summary>
-        public long UnId { get; set; }
-
-        /// <summary>
-        /// Идентификатор клиента
-        /// </summary>
-        public long Cuid { get; set; }
-
-        /// <summary>
-        /// Номер карты списания
-        /// </summary>
-        public string CardNumber { get; set; }
-    }
-}
 ----
 
 //[%notitle]
@@ -105,18 +77,8 @@ namespace Infrastructure.DB.Entities
 * Как? Инструменты в работе:
 [%step]
 ** AsciiDoctor.
-[.notes]
---
-* 1tell anecdote
-* 1make a point
---
 ** Модель данных в проекте .net.
 ** Генератор статической документации.
-[.notes]
---
-* 2tell anecdote
-* 2make a point
---
 * Зачем?
 [%step]
 ** Код и документация единый артефакт... ну почти единый.
@@ -124,20 +86,12 @@ namespace Infrastructure.DB.Entities
 ** Осваивать DocOps не так сложно как казалось бы на первый взгляд.
 ** Дружить с DocOps значит быть в тренде. )
 
+[.notes]
+--
+* 3tell anecdote
+* 3make a point
+--
 <<<
-
-[%notitle]
-== Кодим
-
-.RegularPaymentDetailEntity.cs
-
-[source,csharp,highlight='1..9|2..4|6..8']
-----
-include::{includedir}/RegularPaymentDetailEntity.cs[]
-----
-
-<<<
-
 
 == С чего все началось
 Про постановки в Confluence
@@ -146,9 +100,9 @@ include::{includedir}/RegularPaymentDetailEntity.cs[]
 
 == К чему это все привело
 Ошибки в реализации.
-Рассинхрон между первичной постановкой и реализацией.
+Рассинхронизация между первичной постановкой и реализацией.
 Постановка начала врать.
-виды лжи ложь наглая ложь статистика. Я бы добавил сюда еще устаревшие постановки.
+Виды лжи: ложь, наглая ложь, статистика. Я бы добавил сюда еще устаревшие постановки.
 
 <<<
 
@@ -167,6 +121,8 @@ image::CodeFirst.jpg[, {image-100-width}]
 
 [%notitle]
 == Delivery Pipeline
+
+
 
 
 

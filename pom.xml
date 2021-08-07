@@ -33,7 +33,7 @@
         <asciidoctor.maven.plugin.version>1.6.0</asciidoctor.maven.plugin.version>
         <project.slides.directory>${project.build.directory}/generated-slides</project.slides.directory>
         <revealjs.version>3.9.2</revealjs.version>
-        <highlightjs.version>10.1.2</highlightjs.version>
+        <highlightjs.version>9.18.0</highlightjs.version>
         <asciidoctor-revealjs.version>2.0.1</asciidoctor-revealjs.version>
     </properties>
 
