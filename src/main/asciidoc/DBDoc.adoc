@@ -5,15 +5,17 @@
 :revealjs_slideNumber:
 :revealjs_history:
 :revealjs_progress:
+:revealjs_pdfmaxpagesperslide: 2
 :encoding: UTF-8
 :lang: ru
 include::_doc_general_attributes.adoc[]
 :doctype: article
 :toclevels: 3
 :imagesdir: images
+:includedir: includes
 :source-highlighter: highlightjs
 :highlightjsdir: highlight
-:highlightjs-languages: java, cs, sql
+:highlightjs-languages: java, cs, sql, postgres
 :icons: font
 :iconfont-remote!:
 :iconfont-name: font-awesome-4.7.0/css/font-awesome
@@ -47,9 +49,18 @@ print "Hello World"
 
 Uses highlighted code
 
-[source, sql]
+[source,sql]
 ----
-include::BDSchema.sql[]
+include::{includedir}/BDSchema.sql[]
+----
+
+== Slide Five1
+
+Uses highlighted code
+
+[source,json]
+----
+include::{includedir}/schema.json[]
 ----
 
 == Slide Five2
@@ -94,8 +105,18 @@ namespace Infrastructure.DB.Entities
 * Как? Инструменты в работе:
 [%step]
 ** AsciiDoctor.
+[.notes]
+--
+* 1tell anecdote
+* 1make a point
+--
 ** Модель данных в проекте .net.
 ** Генератор статической документации.
+[.notes]
+--
+* 2tell anecdote
+* 2make a point
+--
 * Зачем?
 [%step]
 ** Код и документация единый артефакт... ну почти единый.
@@ -112,7 +133,7 @@ namespace Infrastructure.DB.Entities
 
 [source,csharp,highlight='1..9|2..4|6..8']
 ----
-include::RegularPaymentDetailEntity.cs[]
+include::{includedir}/RegularPaymentDetailEntity.cs[]
 ----
 
 <<<
