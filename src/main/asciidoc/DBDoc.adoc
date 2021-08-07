@@ -13,7 +13,7 @@ include::_doc_general_attributes.adoc[]
 :imagesdir: images
 :source-highlighter: highlightjs
 :highlightjsdir: highlight
-:highlightjs-languages: java, csharp, sql
+:highlightjs-languages: java, cs, sql
 :icons: font
 :iconfont-remote!:
 :iconfont-name: font-awesome-4.7.0/css/font-awesome
@@ -33,6 +33,57 @@ icon:twitter[size=lg] @ParHandler
 icon:telegram[size=lg] @ParHandler
 
 <<<
+
+== Slide Five
+
+Uses highlighted code
+
+[source, python]
+----
+print "Hello World"
+----
+
+== Slide Five1
+
+Uses highlighted code
+
+[source, sql]
+----
+include::BDSchema.sql[]
+----
+
+== Slide Five2
+
+Uses highlighted code
+
+[source, cs]
+----
+using System.Collections.Generic;
+
+namespace Infrastructure.DB.Entities
+{
+    /// <summary>
+    /// Детали регулярных переводов
+    /// </summary>
+    public class RegularPaymentDetailEntity
+    {
+        /// <summary>
+        /// Идентификатор ППП
+        /// </summary>
+        public long UnId { get; set; }
+
+        /// <summary>
+        /// Идентификатор клиента
+        /// </summary>
+        public long Cuid { get; set; }
+
+        /// <summary>
+        /// Номер карты списания
+        /// </summary>
+        public string CardNumber { get; set; }
+    }
+}
+----
 
 //[%notitle]
 == Что? Как? Зачем
@@ -58,7 +109,8 @@ icon:telegram[size=lg] @ParHandler
 == Кодим
 
 .RegularPaymentDetailEntity.cs
-[source, csharp]
+
+[source,csharp,highlight='1..9|2..4|6..8']
 ----
 include::RegularPaymentDetailEntity.cs[]
 ----
@@ -85,6 +137,12 @@ Design-First vs Code First
 https://apisyouwonthate.com/blog/api-design-first-vs-code-first
 
 image::CodeFirst.jpg[, {image-100-width}]
+
+[.notes]
+--
+* tell anecdote
+* make a point
+--
 
 [%notitle]
 == Delivery Pipeline
