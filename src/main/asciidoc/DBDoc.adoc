@@ -16,8 +16,8 @@ include::_doc_general_attributes.adoc[]
 :includedir: includes
 :source-highlighter: highlightjs
 :source-language: csharp
-:highlightjsdir: {rootdir}/highlight/highlight.js
-//:highlightjsdir: highlight
+//:highlightjsdir: {rootdir}/highlight/highlight.js
+:highlightjsdir: highlight
 :highlightjs-languages: csharp
 :icons: font
 :iconfont-remote!:
@@ -39,37 +39,9 @@ icon:telegram[size=lg] @ParHandler
 
 <<<
 
-[%notitle]
-== Модель сущности
-
-.RegularPaymentDetailEntity.cs
-[source,csharp]
-----
-include::{includedir}/RegularPaymentDetailEntity.cs[]
-----
-
-<<<
-
-== Формируем документ для рендеринга
-
-.BDSchema.sql
-
-[source,sql]
-----
-include::{includedir}/BDSchema.sql[]
-----
-
-== Документ для рендеринга
-
-.schema.json
-
-[source,json]
-----
-include::{includedir}/schema.json[]
-----
 
 //[%notitle]
-== Что? Как? Зачем
+== Что? Как? Зачем?
 
 [%step]
 * Что?
@@ -88,8 +60,8 @@ include::{includedir}/schema.json[]
 
 [.notes]
 --
-* 3tell anecdote
-* 3make a point
+* Для второго блока проговариваю о зависимости от стека
+* ...
 --
 <<<
 
@@ -99,31 +71,208 @@ include::{includedir}/schema.json[]
 <<<
 
 == К чему это все привело
-Ошибки в реализации.
-Рассинхронизация между первичной постановкой и реализацией.
-Постановка начала врать.
-Виды лжи: ложь, наглая ложь, статистика. Я бы добавил сюда еще устаревшие постановки.
+. Ошибки в реализации.
+. Рассинхронизация между первичной постановкой и реализацией.
+. Постановка начала врать.
+
+[%notitle]
+== Виды лжи
+image::MarkTwen.png[, {image-80-width}]
+
+[.notes]
+--
+* Я бы добавил сюда еще устаревшие постановки.
+* Точка правды это исходный код
+--
 
 <<<
 
-[background-color="white"]
 == Про цикл DocOps
-Design-First vs Code First
-https://apisyouwonthate.com/blog/api-design-first-vs-code-first
+Подходы Design-First vs Code First footnote:ref[Источник: https://apisyouwonthate.com/blog/api-design-first-vs-code-first]
 
 image::CodeFirst.jpg[, {image-100-width}]
 
 [.notes]
 --
-* tell anecdote
-* make a point
+* ...
+* ...
 --
 
 [%notitle]
-== Delivery Pipeline
+== Про цикл DocOps
+Сначала Code-First, затем пишем документацию footnote:ref[]
+
+image::CodeFirst2.png[, {image-100-width}]
+
+== Порядок действий
+
+[%step]
+* Описание модели.
+* Описание миграции данных.
+* Сама миграция и генерация базы данных.
+* Формирование схемы данных в формате JSON.
+* Рендеринг выходного документа.
+* Ctrl+C / Ctrl+V в Confluence
+
+[.notes]
+--
+* Первые 2 пункта это Code-First
+* Последние 3 как раз формирование документации
+--
+<<<
+
+[%notitle]
+== Описание модели
+
+.RegularPaymentDetailEntity.cs
+[source,csharp]
+----
+include::{includedir}/RegularPaymentDetailEntity.cs[]
+----
+
+<<<
+
+[%notitle]
+== Описание миграции данных
+
+.RegularPaymentDetailEntityBuilderExtensions.cs
+[source,csharp]
+----
+include::{includedir}/RegularPaymentDetailEntityBuilderExtensions.cs[]
+----
+
+<<<
+
+[%notitle]
+== Миграция данных
+
+Entity Framework Core позволяет создавать миграции, применять миграции и генерировать код для модели на основе существующей базы данных footnote:[https://docs.microsoft.com/en-us/ef/core/cli/dotnet]:
+[source,bash]
+----
+$ dotnet ef --startup-project ../myc-pfm-history/ migrations add  AddCommets -v --context MigrationDbContext
+$ dotnet ef --startup-project ../myc-pfm-history/ database update -v --context MigrationDbContext
+----
+
+<<<
+
+== Формируем документ для рендеринга
+
+.BDSchema.sql
+
+[source,sql]
+----
+include::{includedir}/BDSchema.sql[]
+----
+
+<<<
+
+== Документ для рендеринга
+
+.schema.json
+
+[source,json]
+----
+include::{includedir}/schema.json[]
+----
+
+<<<
+
+== Рендеринг выходного документа
+В примерах будет использоваться Liquid для работы с JSON и реализация в Ruby для процессора Asciidoc.
+
+Генерация диаграммы в формате PlantUML:
+[source,text]
+----
+{% assign bl = "\n" %}
+{%- for table in data -%}
+    class {{ table.name }}{{ bl }}
+    {%- for fk in table.fk -%}
+        {{ table.name }} "*" -- "1" {{ fk.fk_table }}{{ bl }}
+    {%- endfor -%}
+{%- endfor -%}
+----
 
 
+[%notitle]
+== Рендеринг выходного документа
+На выходе получаем текст диаграммы:
 
+[source,puml]
+----
+class pfmhst.__efmigrationshistory
+class pfmhst.client_product
+class pfmhst.event_log
+class pfmhst.mcc_category
+class pfmhst.mcc_code
+pfmhst.mcc_code "*" -- "1" pfmhst.mcc_category
+class pfmhst.merchant
+class pfmhst.payment
+class pfmhst.payment_hub_service
+pfmhst.payment_hub_service "*" -- "1" pfmhst.payment_hub_service_type
+class pfmhst.payment_hub_service_param
+pfmhst.payment_hub_service_param "*" -- "1" pfmhst.payment_hub_service
+class pfmhst.payment_hub_service_type
+class pfmhst.regular_payment_detail
+class pfmhst.transaction
+pfmhst.transaction "*" -- "1" pfmhst.mcc_code
+pfmhst.transaction "*" -- "1" pfmhst.client_product
+pfmhst.transaction "*" -- "1" pfmhst.payment
+pfmhst.transaction "*" -- "1" pfmhst.transfer
+pfmhst.transaction "*" -- "1" pfmhst.regular_payment_detail
+class pfmhst.transfer
+----
 
+[%notitle]
+== Рендеринг выходного документа
 
+Сгенерируем документ в формате Asciidoc:
+[source,text]
+----
+{% assign bl = "\n" %}{% assign bbl = "\n\n" %}
+{%- for table in data -%}
+    [[{{ table.name }}]]{{- bl -}}
+    .Таблица {{ table.name }}. {{ table.comment }}{{- bbl -}}
+    [cols="1,3,3,3,3", options="header"]{{- bl -}}
+    |==={{- bl -}}
+    |№ |Наименование поля |Тип поля |Nullable | Описание{{ bl }}
+    {%- for column in table.columns -%}
+        |{counter:{{ table.name }}} |{{ column.name }} |{{ column.type }}|{{ column.nullable }} l|{{ column.comment }} {{- bl -}}
+    {%- endfor -%}
+    {%- if table.fk -%}
+        5+a|Определены внешние ключи на следующие таблицы:{{- bbl -}}
+        {%- for fk in table.fk -%}
+            * <<{{fk.fk_table}}, {{fk.fk_table}}>>{{- bl -}}
+        {%- endfor -%}
+    {%- endif -%}
+    |==={{- bbl -}}
+{%- endfor -%}
+----
+
+[%notitle]
+== Рендеринг выходного документа
+
+Сгенерируем документ в формате Asciidoc:
+[source,text]
+----
+include::{includedir}/adoc_baza_dannyhx.adoc[]
+----
+
+== Готовый документ
+image::OutDoc.png[, {image-30-width}]
+
+== Ретро: "Что можно было сделать лучше"
+[%step]
+* Доработать оформление диаграммы.
+* Перевести все на один технологический стек.
+* Хранить документацию в репозитории проекта.
+* Генерировать документацию при запуске тестов.
+* CI/CD, автоматическая выгрузка в Confluence
+
+== На этом всё!
+
+* icon:telegram[size=lg] @ParHandler
+{nbsp} +
+* icon:envelope[size=lg] ParHandler@gmail.com
+{nbsp} +
+* *Спасибо!*
 
