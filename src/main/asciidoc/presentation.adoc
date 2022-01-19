@@ -1,0 +1,90 @@
+= DocOps: API Design and API documentation
+Eugene Kunilovsky
+(eх-product owner HomeCredit, ex- X5 Retail Group)
+:rootdir: .
+:revealjs_theme: black
+:revealjs_customtheme: white_course.css
+:revealjs_slideNumber:
+:revealjs_history:
+:revealjs_progress:
+:revealjs_pdfmaxpagesperslide: 2
+:encoding: UTF-8
+:lang: ru
+include::_doc_general_attributes.adoc[]
+:doctype: article
+:toclevels: 3
+:imagesdir: images
+:includedir: includes
+:source-highlighter: highlightjs
+:source-language: csharp
+//:highlightjsdir: {rootdir}/highlight/highlight.js
+:highlightjsdir: highlight
+:highlightjs-languages: csharp
+:icons: font
+:iconfont-remote!:
+:iconfont-name: font-awesome-4.7.0/css/font-awesome
+:revealjs_mouseWheel: true
+:revealjs_center: false
+:revealjs_transition: none
+:revealjs_width: 1600
+:revealjs_height: 900
+
+
+//== Часть 1. Введение
+:!figure-caption:
+
+ParHandler@gmail.com
+
+icon:twitter[size=lg] @ParHandler
+icon:telegram[size=lg] @ParHandler
+
+<<<
+
+
+//[%notitle]
+== Что? Как? Зачем?
+
+[%step]
+* Что?
+** пункты.
+* Как? Инструменты в работе:
+[%step]
+** пункты.
+** пункты.
+** пункты.
+* Зачем?
+[%step]
+** пункты.
+** пункты.
+** пункты.
+** пункты. )
+
+[.notes]
+--
+* Наши примечания к блоку
+* ...
+--
+<<<
+
+== Adding an OpenAPI Macro to a Confluence Page footnote:ref[Source: https://oharagroup.bitbucket.io/confluence-open-api/]
+Example:
+https://petstore.swagger.io/v2/swagger.json
+
+. Start by creating/editing a page in Confluence
+. Insert the macro either
+* via the Macro Browser (search for "Open API" or "Swagger")
+* or by simply typing either {open-api or {swagger
+. Specify your Open API-compliant JSON or YAML definition either
+* by typing or pasting JSON or YAML directly into the macro body
+* in the macro configuration dialog, enter the URL of a publicly accessible JSON or YAML definition
+
+<<<
+
+== That's all!
+
+* icon:telegram[size=lg] @ParHandler
+{nbsp} +
+* icon:envelope[size=lg] ParHandler@gmail.com
+{nbsp} +
+* *Thank you all.*
+
