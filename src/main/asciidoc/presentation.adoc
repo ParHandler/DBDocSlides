@@ -1,6 +1,5 @@
 = DocOps: API Design and API documentation
-Eugene Kunilovsky
-(eх-product owner HomeCredit, ex- X5 Retail Group)
+Eugene Kunilovsky (BSA, eх-product owner HomeCredit, ex- X5 Retail Group)
 :rootdir: .
 :revealjs_theme: black
 :revealjs_customtheme: white_course.css
@@ -40,32 +39,6 @@ icon:telegram[size=lg] @ParHandler
 
 <<<
 
-
-//[%notitle]
-== Что? Как? Зачем?
-
-[%step]
-* Что?
-** пункты.
-* Как? Инструменты в работе:
-[%step]
-** пункты.
-** пункты.
-** пункты.
-* Зачем?
-[%step]
-** пункты.
-** пункты.
-** пункты.
-** пункты. )
-
-[.notes]
---
-* Наши примечания к блоку
-* ...
---
-<<<
-
 == Adding an OpenAPI Macro to a Confluence Page footnote:ref[Source: https://oharagroup.bitbucket.io/confluence-open-api/]
 Example:
 https://petstore.swagger.io/v2/swagger.json
@@ -73,10 +46,20 @@ https://petstore.swagger.io/v2/swagger.json
 . Start by creating/editing a page in Confluence
 . Insert the macro either
 * via the Macro Browser (search for "Open API" or "Swagger")
-* or by simply typing either {open-api or {swagger
+* or by simply typing either *{open-api* or *{swagger*
 . Specify your Open API-compliant JSON or YAML definition either
 * by typing or pasting JSON or YAML directly into the macro body
 * in the macro configuration dialog, enter the URL of a publicly accessible JSON or YAML definition
+
+<<<
+
+== Macro Result
+image::OpenAPISpec.png[, {image-100-width}]
+
+[.notes]
+--
+* И вот такой результат получаем при вставке YAML в макрос.
+--
 
 <<<
 

@@ -8,18 +8,22 @@
     <artifactId>csa-talk</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
-    <name>Continuous Static Analysis talk slides</name>
-    <description>KStreams talk slides</description>
+    <name>Talk slides</name>
+    <description>Talk slides</description>
 
     <organization>
-        <name>CURS</name>
-        <url>https://corchestra.ru</url>
+        <name>Home</name>
+        <url>https://parhandler.github.com</url>
     </organization>
 
     <developers>
         <developer>
             <name>Ivan Ponomarev</name>
             <email>iponomarev@mail.ru</email>
+        </developer>
+        <developer>
+            <name>Eugene Kunilovsky</name>
+            <email>kunilovskye@yandex.ru</email>
         </developer>
     </developers>
 
