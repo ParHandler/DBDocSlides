@@ -54,11 +54,21 @@ https://petstore.swagger.io/v2/swagger.json
 <<<
 
 == Macro Result
-image::OpenAPISpec.png[, {image-100-width}]
+image::OpenAPISpec.png[, ]
 
 [.notes]
 --
-* И вот такой результат получаем при вставке YAML в макрос.
+* И вот такой результат получаем при вставке YAML в макрос
+--
+
+<<<
+
+== Macro Result 2
+image::OpenAPISpec.png[, ]
+
+[.notes]
+--
+* 2
 --
 
 <<<
