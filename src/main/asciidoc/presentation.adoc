@@ -63,15 +63,22 @@ image::OpenAPISpec.png[, ]
 
 <<<
 
-== Macro Result 2
-image::OpenAPISpec.png[, ]
+== Macro Result 123
+
+image::Repos.png[, ]
+и текст
 
 [.notes]
 --
-* 2
+* 3
 --
 
 <<<
+
+== Grant Access
+https://gitlab.company.ru/profile/personal_access_tokens
+
+image::Access.png[]
 
 == That's all!
 
